@@ -2,17 +2,46 @@
     color: white;
 }
 
-.card {
+.sidecard {
     margin-top: 7%;
 }
-/* .fiveDayWeather {
-    padding-right: 5%;
-} */
+ 
 .cuurentCity {
     margin-top: 7%;
 }
 
 .green {
     background-color: green;
-    font-weight: 500;
+    font-weight: bolder;
 }
+.orange {
+    background-color:orange;
+    font-weight: bolder;
+}
+.red {
+    background-color: red;
+    font-weight: bolder;
+}
+/* .cardlittle {
+    background-color: blue;
+}  */
+.jumbotron {
+    background-color: whitesmoke;
+   
+}
+ p {
+     margin: 0px 0px 12px;
+ }
+ .card-body {
+    padding: .5rem;
+    background-color: blue;
+ }
+ h5 p {
+    text-decoration-color:white;
+ }
+ .col-sm-2 {
+     color:white;
+ }
+/* .fiveDayWeather {
+    color:white;
+} */
