@@ -19,6 +19,7 @@ function getWeather(cityName){
     .then(function(response){
     //Put all the information that I want to use to update the current weather here.
     console.log(response);
+    $(".list-group").prepend(" <li class='list-group-item'>"+ response.name + "</li>");
     var cityTitle = response.name;
     //To display city name and date.
     $(".currentCityName").text(response.name +" " + moment().format('l') );
@@ -110,6 +111,11 @@ function getWeather(cityName){
     $("#humidity3").text("Humidity: " + response3.list[2].main.humidity + "%");
     $("#humidity4").text("Humidity: " + response3.list[3].main.humidity + "%");
     $("#humidity5").text("Humidity: " + response3.list[4].main.humidity + "%");
+
+    //Save the latest city to local storage
+    var cityName = $("#city-name").val();
+  console.log(cityName);
+    localStorage.setItem("city", cityName);
     })
     })
     }) 
@@ -160,6 +166,7 @@ function handleSubmit(event){
     event.preventDefault();
     var cityName = $("#city-name").val().trim();
     //call save history
+    $(".list-group").prepend(" <li class='list-group-item'>"+ localStorage.getItem("city") + "</li>")
     getWeather(cityName)
 }
 
