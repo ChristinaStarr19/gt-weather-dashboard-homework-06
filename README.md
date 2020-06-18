@@ -18,7 +18,7 @@ This weather dashboard collects data from the Open Weather API and dynamically g
 
 It is built using DOM manipulation techniques in Javascript and customized based on acceptance criteria provided in class.
 
-![Deployed site for portfolio](Coming Soon)
+![Deployed site for portfolio](./Assets/weather-dashboard-screenshot.png)
 
 Link to deployed application:
 
