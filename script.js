@@ -20,10 +20,6 @@ $(document).ready(function () {
       // Once the call is made, I want the following functions to happen
       .then(function (response) {
         //Put all the information that I want to use to update the current weather here.
-        console.log(response);
-        $(".list-group").prepend(
-          " <li class='list-group-item'>" + response.name + "</li>"
-        );
         var cityTitle = response.name;
         //To display city name and date.
         $(".currentCityName").text(response.name + " " + moment().format("l"));
