@@ -70,11 +70,7 @@ $(document).ready(function () {
           }).then(function (response3) {
             console.log(response3);
 
-            //Put all the information that I want to use to update the 5 day forecast here.
-
-            //Use this for the icons :
-            // var cityIconUrl = "http://openweathermap.org/img/w/" + iconEl + ".png";
-            // $("#cityIconUrl").attr("src", cityIconUrl)
+          
 
             $("#day1").text(moment().add(1, "days").format("l"));
             $("#day2").text(moment().add(2, "days").format("l"));
