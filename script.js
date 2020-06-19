@@ -24,7 +24,7 @@ $(document).ready(function () {
         //To display city name and date.
         $(".currentCityName").text(response.name + " " + moment().format("l"));
         var iconPic = response.weather[0].icon;
-        var iconURL = "http://openweathermap.org/img/w/" + iconPic + ".png";
+        var iconURL = "https://openweathermap.org/img/w/" + iconPic + ".png";
         //To display icon.
         $("#icon").attr("src", iconURL);
         //To display temperature.
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
         
         var queryURL_UV =
-          "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+          "https://api.openweathermap.org/data/2.5/uvi?appid=" +
           APIKey +
           "&lat=" +
           response.coord.lat +
@@ -60,7 +60,7 @@ $(document).ready(function () {
           }
 
           var queryURLForecast =
-            "http://api.openweathermap.org/data/2.5/forecast?q=" +
+            "https://api.openweathermap.org/data/2.5/forecast?q=" +
             cityName +
             "&units=imperial&appid=" +
             APIKey;
@@ -84,23 +84,23 @@ $(document).ready(function () {
 
             var icon1 = response3.list[0].weather[0].icon;
             var cityIconUrl1 =
-              "http://openweathermap.org/img/w/" + icon1 + ".png";
+              "https://openweathermap.org/img/w/" + icon1 + ".png";
             $("#icon1").attr("src", cityIconUrl1);
             var icon2 = response3.list[1].weather[0].icon;
             var cityIconUrl2 =
-              "http://openweathermap.org/img/w/" + icon2 + ".png";
+              "https://openweathermap.org/img/w/" + icon2 + ".png";
             $("#icon2").attr("src", cityIconUrl2);
             var icon3 = response3.list[2].weather[0].icon;
             var cityIconUrl3 =
-              "http://openweathermap.org/img/w/" + icon3 + ".png";
+              "https://openweathermap.org/img/w/" + icon3 + ".png";
             $("#icon3").attr("src", cityIconUrl3);
             var icon4 = response3.list[3].weather[0].icon;
             var cityIconUrl4 =
-              "http://openweathermap.org/img/w/" + icon4 + ".png";
+              "https://openweathermap.org/img/w/" + icon4 + ".png";
             $("#icon4").attr("src", cityIconUrl4);
             var icon5 = response3.list[4].weather[0].icon;
             var cityIconUrl5 =
-              "http://openweathermap.org/img/w/" + icon5 + ".png";
+              "https://openweathermap.org/img/w/" + icon5 + ".png";
             $("#icon5").attr("src", cityIconUrl5);
 
             $("#temp1").text("Temp: " + response3.list[0].main.temp + " °F");
@@ -135,44 +135,6 @@ $(document).ready(function () {
       });
   }
 
-  //     function getUV(response){
-  //      //Let's see if the URL was created successfully.
-  //     console.log(response);
-  // //     coords.push({"lat": response.coord.lat});
-  //     coords.push({"lon":response.coord.lon});
-  //     // console.log(coords[0].lat);
-  //     var lat = response.coord.lat;
-  //     var lon = response.coord.lon;
-
-  // //     $(".list-group").append(" <li class='list-group-item'>"+ response.name + "</li>")
-
-  // //     // var lat =
-
-  //     var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey +  "&lat=" +  latitude + "&lon=" + longitude;
-
-  //     $.ajax({
-  //         url: queryURL2,
-  //         method: 'GET'
-  //     }).then(getForecast)
-  // }
-
-  //  function getForecast(response2){
-  //     console.log(coords[1].lon);
-  //     // var lon = response.coord.lon;
-  //     console.log(queryURL2);
-
-  //     //  $.ajax({
-
-  //     //  }).then(buildPage)
-
-  //  }
-  // function buildPage(response3){
-  //     //build the page
-  // }
-
-  // function savedhistory(cityName){
-  //     //store cityname in localstorage
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -187,10 +149,4 @@ $(document).ready(function () {
 
   $("#add-city").on("click", handleSubmit);
 
-  // This is where I'll run the AJAX call to the API
-
-  // read list from local storage
-  // if not empty
-  //   populate list on the left
-  //   take last city and call getWeather()
 });
