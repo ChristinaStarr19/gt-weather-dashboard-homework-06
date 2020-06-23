@@ -42,6 +42,6 @@
  .col-sm-2 {
      color:white;
  }
-/* .fiveDayWeather {
-    color:white;
-} */
+.fiveDayWeather {
+    margin: 2%;
+}
