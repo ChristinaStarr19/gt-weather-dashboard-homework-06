@@ -6,7 +6,10 @@ $(document).ready(function () {
   var queryURL;
   var queryURL2;
   var coords = [];
-
+  var history = JSON.parse(localStorage.getItem("history")) || [];
+  if (history.length > 0) {
+    getWeather(history[history.length - 1]);
+  }
   function getWeather(cityName) {
     var queryURLCurrent =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -21,6 +24,13 @@ $(document).ready(function () {
       .then(function (response) {
         //Put all the information that I want to use to update the current weather here.
         var cityTitle = response.name;
+        if (history.indexOf(cityName) === -1) {
+          history.push(cityTitle);
+          localStorage.setItem("history", JSON.stringify(history));
+        }
+
+        //Call renderButtons
+        renderButtons();
         //To display city name and date.
         $(".currentCityName").text(response.name + " " + moment().format("l"));
         var iconPic = response.weather[0].icon;
@@ -34,7 +44,6 @@ $(document).ready(function () {
         //To display windspeed
         $("#windSpeed").text("Windspeed: " + response.wind.speed + " MPH");
 
-        
         var queryURL_UV =
           "https://api.openweathermap.org/data/2.5/uvi?appid=" +
           APIKey +
@@ -69,8 +78,6 @@ $(document).ready(function () {
             method: "GET",
           }).then(function (response3) {
             console.log(response3);
-
-          
 
             $("#day1").text(moment().add(1, "days").format("l"));
             $("#day2").text(moment().add(2, "days").format("l"));
@@ -120,8 +127,7 @@ $(document).ready(function () {
             $("#humidity5").text(
               "Humidity: " + response3.list[4].main.humidity + "%"
             );
-        
-        
+
             //Save the latest city to local storage
             var cityName = $("#city-name").val();
             console.log(cityName);
@@ -131,18 +137,25 @@ $(document).ready(function () {
       });
   }
 
+  function renderButtons() {
+    $(".list-group").empty();
+    for (var i = 0; i < history.length; i++) {
+      $(".list-group").prepend(
+        " <li class='list-group-item'>" + history[i] + "</li>"
+      );
+    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     var cityName = $("#city-name").val().trim();
     //call save history
-    $(".list-group").prepend(
-      " <li class='list-group-item'>" + localStorage.getItem("city") + "</li>"
-    );
 
     getWeather(cityName);
   }
 
   $("#add-city").on("click", handleSubmit);
-
+  $(".list-group").on("click", ".list-group-item", function () {
+    getWeather($(this).text());
+  });
 });
